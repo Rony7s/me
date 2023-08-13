@@ -148,7 +148,19 @@
             <h3>my name is <span>Rony Ahmmed</span></h3> 
             
             <p>"I’m a front-end developer with experience in building websites for small and medium sized businesses. Whether you’re trying to win work, list your services or even create a whole online store – I can help! I’m experienced in HTML5 and CSS3, JavaScript, jQuery, Bootstrap5, Java, C programming, C++, Data structure and Algorithom, Database Management System mySQL . I’ll fully project manage your brief from start to finish Regular communication is really important to me, so let’s keep in touch!”</p>
-            <a href="#" class="btn">contact me</a>
+
+            <button class="btn" id="mailButton">Click to Email</button>
+
+            <script>
+                document.getElementById("mailButton").addEventListener("click", function() {
+                    var recipientEmail = "bdu.rony@gmail.com";   
+                    var subject = "Hello from Website";         
+
+                    var mailtoLink = "mailto:" + recipientEmail + "?subject=" + encodeURIComponent(subject);
+
+                    window.location.href = mailtoLink;
+                });
+            </script>
         </div>
 
     </div>

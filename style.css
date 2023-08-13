@@ -372,7 +372,7 @@ section{
 .services .box-container .box p{
     font-size:1.4rem;
     line-height: 1.8;
-    color:var(--light-color);
+    color:black;
 }
 
 .services .box-container .box::before{
@@ -392,7 +392,7 @@ section{
 }
 
 .services .box-container .box:hover > *{
-    color:#fff;
+    color:#000;
 }
 
 .Project .box-container{
