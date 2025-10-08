@@ -2,9 +2,9 @@
 /* this font is my favourite */
 
 :root{
-    --green:yellow;
-    --tomato:#ff3f80;
-    --black:#f1f1f1;
+    --yellow:yellow;
+    --pink:#ff3f80;
+    --white:#f1f1f1;
     --light-color:#f1f1f1;
     --bg-color:#3E50B4;
     --border:.1rem solid rgba(0,0,0,.2);
@@ -20,14 +20,13 @@
     box-sizing: border-box;
     outline: none; border:none;
     text-decoration: none;
-    text-transform: capitalize;
     transition: .2s linear;
     list-style: none;
 }
 
 *::selection{
-	background:green;
-	color:red;
+	background:var(--yellow);
+	color:var(--bg-color);
 }
 
 html{
@@ -40,10 +39,10 @@ html::-webkit-Scrollbar{
 }
 
 html::-webkit-Scrollbar-track{
-	background:yellow;
+	background:var(--white);
 }
 html::-webkit-Scrollbar-thumb{
-	background:red;
+	background:var(--pink);
 }
 
 
@@ -53,7 +52,7 @@ body{
 }
 
 body.active{
-    --black:#fff;
+    --white:#fff;
     --light-color:#ddd;
     --bg-color:#ff3f80;
     --border:.1rem solid rgba(0,0,0,.4);
@@ -64,10 +63,13 @@ body.active{
 }
 
 section{
-    min-height: 100vh;
+
     padding:2rem;
 }
+#home{
+    min-height: 100vh;
 
+}
 .btn{
     margin-top: 1rem;
     display: inline-block;
@@ -88,13 +90,13 @@ section{
 .head_title{
     text-align: center;
     font-size: 5rem;
-    color:var(--black);
+    color:var(--white);
     text-transform: uppercase;
     padding-bottom: 2rem;
 }
 
 .head_title span{
-    color:var(--green);
+    color:var(--yellow);
     text-transform: uppercase;
 }
 
@@ -120,13 +122,13 @@ section{
 }
 
 .main_menu .user h3{
-    color:var(--black);
+    color:var(--white);
     font-size: 2.5rem;
     font-family: 'Roboto', sans-serif;
 }
 
 .main_menu .user p{
-    color:var(--green);
+    color:var(--yellow);
     font-size: 1.5rem;
 }
 
@@ -141,7 +143,7 @@ section{
     border-radius: 5rem;
     font-size: 2rem;
     box-shadow: var(--box-shadow);
-    color:var(--black);
+    color:var(--white);
 }
 
 .main_menu .navbar a:hover{
@@ -161,13 +163,13 @@ section{
     cursor: pointer;
     box-shadow: var(--box-shadow);
     text-align: center;
-    color:var(--black);
+    color:var(--white);
     background: var(--bg-color);
     display: none;
 }
 
 #menu-btn:hover{
-    color:var(--green);
+    color:var(--yellow);
     box-shadow: var(--box-shadow-inset);
 }
 
@@ -188,7 +190,7 @@ section{
 }
 
 #theme-toggler:hover{
-    color:var(--green);
+    color:var(--yellow);
     box-shadow: var(--box-shadow-inset);
 }
 
@@ -202,14 +204,14 @@ section{
 
 .home .content h3{
     font-size: 7rem;
-    color:var(--black);
+    color:var(--white);
     line-height: 1.1;
     text-transform: uppercase;
 }
 
 .home .content p{
     font-size: 2rem;
-    color:var(--green);
+    color:var(--yellow);
     padding-bottom: .5rem;
 }
 
@@ -228,19 +230,19 @@ section{
     box-shadow: var(--box-shadow);
     margin:.5rem;
     font-size: 2rem;
-    color:var(--black);
+    color:var(--white);
     border-radius: .5rem;
 }
 .project_link{
     padding: 5px 10px;
     font-size: 2rem;
-    color:var(--black);
+    color:var(--white);
     border-radius: .5rem;
     border: 2px solid white;
 }
 .home .share_link a:hover{
     box-shadow: var(--box-shadow-inset);
-    color:var(--green);
+    color:var(--yellow);
 }
 
 .about .row{
@@ -267,7 +269,7 @@ section{
 
 .about .row .box-container .box h3{
     font-size: 5rem;
-    color:var(--black);
+    color:var(--white);
     line-height: 1.1;
 }
 
@@ -283,12 +285,12 @@ section{
 }
 .about .row .content h3{
     font-size: 3.5rem;
-    color:var(--black);
+    color:var(--white);
     line-height: 1.8;
 }
 
 .about .row .content h3 span{
-    color:var(--green);
+    color:var(--yellow);
 }
 
 .about .row .content p{
@@ -307,7 +309,7 @@ section{
 }
 
 .about .row .progress h3{
-    color:var(--black);
+    color:var(--white);
     font-weight: normal;
     font-size: 2rem;
     display: flex;
@@ -330,17 +332,243 @@ section{
     border-radius: 5rem;
 }
 
-.about .row .progress .bar1 span{width: 90%;}
-.about .row .progress .bar2 span{width: 85%;}
-.about .row .progress .bar3 span{width: 80%;}
-.about .row .progress .bar4 span{width: 70%;}
-.about .row .progress .bar5 span{width: 85%;}
-.about .row .progress .bar6 span{width: 90%;}
-.about .row .progress .bar7 span{width: 99%;}
-.about .row .progress .bar8 span{width: 92%;}
-.about .row .progress .bar9 span{width: 80%;}
-.about .row .progress .bar10 span{width: 90%;}
- 
+/* Education */
+.education .box-container{
+    display: flex;
+    align-items: baseline;;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    padding:1rem 0;
+    padding-left: 3rem;
+}
+
+.education .box-container .box{
+    width:27rem;
+    margin:4rem 1rem;
+    padding-left: 4rem;
+    border-left: .2rem solid #fff;
+    position: relative;
+}
+
+.education .box-container .box span{
+    font-size: 1.3rem;
+    background:#222;
+    color:#fff;
+    border-radius: 5rem;
+    padding:.5rem 2.5rem;
+}
+
+.education .box-container .box h3{
+    font-size: 2rem;
+    color:#fff;
+    padding-top: 1.5rem;
+}
+.education .box-container .box h4{
+    font-size: 1.3rem;
+    color:yellow;
+}
+
+.education .box-container .box p{
+    font-size: 1.4rem;
+    color:#eee;
+    padding: 1rem 0;
+    font-weight: 300;
+}
+
+.education .box-container .box i{
+    position: absolute;
+    top:-1.5rem; left:-2.5rem;
+    height:5rem;
+    width: 5rem;
+    border-radius: 50%;
+    line-height: 5rem;
+    text-align: center;
+    font-size: 2rem;
+    color:#fff;
+    background:var(--yellow);
+}
+
+/* =========================
+   Skills Section
+=========================*/
+
+.skills {
+  padding: 5rem 2rem;
+  background: var(--bg-color);
+}
+
+.skills .head_title {
+  font-size: 4rem;
+  text-align: center;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-bottom: 4rem;
+}
+
+.skills .head_title span {
+  color: var(--yellow);
+}
+
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+  gap: 3rem;
+}
+
+.skill-box {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-box:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-inset);
+}
+
+.skill-box h2 {
+  font-size: 2.5rem;
+  color: var(--yellow);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.skill-box .progress h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.7rem;
+  color: var(--white);
+  margin: 1.2rem 0 0.6rem 0;
+}
+
+.skill-box .progress .bar {
+  width: 100%;
+  height: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5rem;
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-box .progress .bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #00c2ff, #1fd4eb);
+  border-radius: 5rem;
+  transition: width 1.2s ease-in-out;
+}
+
+.skill-box ul {
+  list-style: none;
+  padding: 1rem 0 0 1rem;
+}
+
+.skill-box ul li {
+  font-size: 1.7rem;
+  color: var(--light-color);
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.skill-box ul li::before {
+  content: "✔";
+  color: var(--yellow);
+  font-weight: bold;
+  margin-right: 0.8rem;
+}
+
+/* Optional: Add subtle animation to progress bars */
+.skill-box .progress .bar span {
+  animation: growBar 2s ease-out forwards;
+}
+
+@keyframes growBar {
+  from {
+    width: 0;
+  }
+}
+
+/* 📱 Responsive adjustments */
+@media (max-width: 768px) {
+  .skills .head_title {
+    font-size: 3.5rem;
+  }
+
+  .skill-box h2 {
+    font-size: 2.2rem;
+  }
+
+  .skill-box .progress h3 {
+    font-size: 1.6rem;
+  }
+}
+
+
+
+/* achievement */
+.achievement .box-container{
+    display: flex;
+    align-items: baseline;;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    padding:1rem 0;
+    padding-left: 3rem;
+}
+
+.achievement .box-container .box{
+    width:27rem;
+    margin:4rem 1rem;
+    padding-left: 4rem;
+    border-left: .2rem solid #fff;
+    position: relative;
+}
+
+.achievement .box-container .box span{
+    font-size: 1.3rem;
+    background:#222;
+    color:#fff;
+    border-radius: 5rem;
+    padding:.5rem 2.5rem;
+}
+
+.achievement .box-container .box h3{
+    font-size: 2rem;
+    color:#fff;
+    padding-top: 1.5rem;
+}
+.achievement .box-container .box h4{
+    font-size: 1.3rem;
+    color:yellow;
+}
+
+.achievement .box-container .box p{
+    font-size: 1.4rem;
+    color:#eee;
+    padding: 1rem 0;
+    font-weight: 300;
+}
+
+.achievement .box-container .box i{
+    position: absolute;
+    top:-1.5rem; left:-2.5rem;
+    height:5rem;
+    width: 5rem;
+    border-radius: 50%;
+    line-height: 3rem;
+    text-align: center;
+    font-size: 2rem;
+    color:#fff;
+    background:var(--yellow);
+}
+
+
 
 .services .box-container{
     display: grid;
@@ -366,7 +594,7 @@ section{
 .services .box-container .box h3{
     font-size:2rem;
     padding-bottom: 1rem;
-    color:var(--black);
+    color:var(--white);
 }
 
 .services .box-container .box p{
@@ -381,7 +609,7 @@ section{
     top:0; left: 0;
     height: 100%;
     width: 100%;
-    background: var(--green);
+    background: var(--yellow);
     z-index: -1;
     clip-path: circle(9rem at 5% 0%);
     transition: .3s linear;
@@ -433,7 +661,7 @@ section{
 
 .Project .box-container .box .content h3{
     font-size: 2.5rem;
-    color:var(--black);
+    color:var(--white);
     text-transform: uppercase;
     transform: translateY(-5rem);
     opacity: 0;
@@ -459,7 +687,6 @@ section{
     background: none;
     color:white;
     font-size: 1.6rem;
-    
     margin:.7rem 0;
     box-shadow: var(--box-shadow);
     border-radius: .5rem;
@@ -493,26 +720,12 @@ section{
     padding:2.5rem 1rem;
     margin-top: 1rem;
     border-top: var(--border);
-    color:var(--black);
+    color:var(--white);
 }
 
 .footer a{
-    color: var(--green);
+    color: var(--yellow);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* media queries  */
