@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age & Countdown</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fa;
+            color: #1f2937;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            margin: 30px 0 14px;
+            padding-bottom: 8px;
+            font-size: 22px;
+            font-weight: 600;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .card {
+            background: #ffffff;
+            margin-bottom: 14px;
+            padding: 20px 22px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h2 {
+            margin: 0 0 12px;
+            font-size: 19px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .time {
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 1.8;
+            word-spacing: 2px;
+            color: #374151;
+        }
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 25px 12px;
+            }
+
+            .section-title {
+                margin-top: 25px;
+                font-size: 20px;
+            }
+
+            .card {
+                padding: 16px;
+                border-radius: 8px;
+            }
+
+            .card h2 {
+                font-size: 18px;
+            }
+
+            .time {
+                font-size: 15px;
+                line-height: 1.7;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+
+        <h2 class="section-title">Today</h2>
+        <div id="information"></div>
+
+        <h2 class="section-title">Coming Soon</h2>
+        <div id="info_remaining"></div>
+
+    </div>
+
+
+    <script>
+
+        const people = [
+            ["Age", "Nov 11, 2001"],
+            ["BSc", "Sep 26, 2026"],
+            ["R", "July 24, 1999"]
+        ];
+
+        const coming = [
+            ["GovtFinal32", "Nov 10, 2033"],
+            ["2030", "Nov 10, 2030"]
+        ];
+
+
+        function duration(from, to) {
+
+            let years = to.getFullYear() - from.getFullYear();
+            let months = to.getMonth() - from.getMonth();
+            let days = to.getDate() - from.getDate();
+
+            let hours = to.getHours() - from.getHours();
+            let minutes = to.getMinutes() - from.getMinutes();
+            let seconds = to.getSeconds() - from.getSeconds();
+
+            if (seconds < 0) {
+                seconds += 60;
+                minutes--;
+            }
+
+            if (minutes < 0) {
+                minutes += 60;
+                hours--;
+            }
+
+            if (hours < 0) {
+                hours += 24;
+                days--;
+            }
+
+            if (days < 0) {
+                months--;
+
+                days += new Date(
+                    to.getFullYear(),
+                    to.getMonth(),
+                    0
+                ).getDate();
+            }
+
+            if (months < 0) {
+                months += 12;
+                years--;
+            }
+
+            return {
+                years,
+                months,
+                days,
+                hours,
+                minutes,
+                seconds
+            };
+        }
+
+
+        function totalTime(from, to) {
+
+            const time = Math.max(0, to - from);
+
+            const seconds = Math.floor(time / 1000);
+            const minutes = Math.floor(seconds / 60);
+            const hours = Math.floor(minutes / 60);
+            const days = Math.floor(hours / 24);
+            const weeks = Math.floor(days / 7);
+            const months = Math.floor(days / 30);
+
+            return {
+                seconds,
+                minutes,
+                hours,
+                days,
+                weeks,
+                months
+            };
+        }
+
+
+        function calculateAge(data) {
+
+            const now = new Date();
+
+            return data.map(([name, dob]) => {
+
+                const birth = new Date(dob);
+
+                const age = duration(birth, now);
+                const total = totalTime(birth, now);
+
+                return `
+            <div class="card">
+
+                <h2>${name}</h2>
+
+                <div class="time">
+                    ${age.years} years
+                    ${age.months} months
+                    ${age.days} days
+                    ${age.hours} hours
+                    ${age.minutes} minutes
+                    ${age.seconds} seconds
+                </div>
+            </div>
+        `;
+
+            }).join("");
+        }
+
+
+        function comingSoon(data) {
+
+            const now = new Date();
+
+            return data.map(([name, date]) => {
+
+                const target = new Date(date);
+
+                if (target <= now) {
+
+                    return `
+                <div class="card">
+                    <h2>${name}</h2>
+                    <div class="time">Date has arrived!</div>
+                </div>
+            `;
+                }
+
+                const remaining = duration(now, target);
+                const total = totalTime(now, target);
+
+                return `
+            <div class="card">
+
+                <h2>${name}</h2>
+
+                <div class="time">
+                    ${remaining.years} years
+                    ${remaining.months} months
+                    ${remaining.days} days
+                    ${remaining.hours} hours
+                    ${remaining.minutes} minutes
+                    ${remaining.seconds} seconds
+                </div>
+            </div>
+        `;
+
+            }).join("");
+        }
+
+
+        function update() {
+
+            document.getElementById("information").innerHTML =
+                calculateAge(people);
+
+            document.getElementById("info_remaining").innerHTML =
+                comingSoon(coming);
+        }
+
+
+        update();
+
+        setInterval(update, 1000);
+
+    </script>
+
+</body>
+
+</html>
